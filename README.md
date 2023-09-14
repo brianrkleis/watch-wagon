@@ -12,3 +12,6 @@ Back-End: ExpressJS
 Servidor: Docker com Nginx
 
 Banco de dados: PostreSQL
+
+### Documentos e informações
+Os diagramas do projeto estão na pasta diagrams. Aqui também está o link do JIRA: https://watchwagon.atlassian.net/jira/software/projects/WW/boards/1. Na tarefa de criar diagrama de arquitetura está presente o documento de arquitetura.
