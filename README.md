@@ -26,6 +26,49 @@ Pull requests são bem vindos contanto que seja aberto issue.
 ## Licença
 
 [MIT](https://choosealicense.com/licenses/mit/)
+## Requisitos funcionais:​
+
+Cadastro de Usuário:​
+Os usuários devem ser capazes de criar contas com informações básicas.​
+Opção de registro por e-mail, número de telefone ou login social (por exemplo, Facebook ou Google).​
+
+Autenticação e Segurança:​
+Autenticação segura para proteger as contas dos usuários.​
+Recuperação de senha caso o usuário esqueça suas credenciais de login.​
+
+Pesquisa e Navegação:​
+Os usuários devem poder pesquisar filmes por título e gênero.​
+Opção de explorar filmes por categorias.​
+
+Aluguel de Filmes:​
+Os usuários podem alugar filmes individualmente.​
+Pagamento seguro e opções de pagamento flexíveis (cartão de crédito e Pix).​
+Exibição de informações sobre o período de aluguel, preço e disponibilidade.​
+
+Streaming de Filmes:​
+Informações de plataformas de streaming para o aluguel.​
+Utilização apenas da plataforma YouTube.​
+
+Gerenciamento de Conta:​
+Os usuários podem editar informações pessoais, como nome, endereço, etc.​
+Opção de adicionar e gerenciar métodos de pagamento.​
+Capacidade de desativar permanentemente a conta.​
+
+Watchlist:​
+Capacidade de adicionar e remover filmes da WatchList.
+
+## Requisitos não funcionais:​
+
+Desempenho:​
+Tempo de carregamento rápido do streaming de vídeos sem interrupções.​
+Escalabilidade para lidar com um grande número de usuários e filmes.​
+
+Segurança:​
+Proteção de dados do usuário e informações de pagamento.​
+
+Usabilidade:​
+Interface de usuário intuitiva e amigável.​
+Suporte a navegadores(Google Chrome e Brave) nos dispositivos desktops.
 
 ## Restrições
 
