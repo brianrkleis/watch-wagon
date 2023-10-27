@@ -7,7 +7,7 @@ const password_func = require('../domain/auth/password');
 exports.seed = async function(knex) {
 
   return knex('users').del().then(async () => {
-    knex('users').insert({
+    await knex('users').insert({
       id: 1,
       username: 'admin',
       email: 'admin@admin.com',

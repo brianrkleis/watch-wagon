@@ -1,12 +1,11 @@
-const argon2 = require('argon2');
+const hash = require('password-hash');
 
 async function compare_password(hashed, password) {
-    return await argon2.verify(hashed, password);
+    return await hash.verify(password, hashed);
 }
 
 async function hash_password(password) {
-    console.log(process.env.APP_SECRET);
-    return await argon2.hash(password, {secret: Buffer.from(process.env.APP_SECRET)})
+    return await hash.generate(password)
 }
 
 module.exports = {

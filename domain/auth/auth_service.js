@@ -1,18 +1,22 @@
 const password_func = require('./password');
 var jwt = require('jsonwebtoken');
+var { User } = require('../user/user');
 
 class AuthService {
-    static login(req, res) {
+    static async login(req, res) {
         let email = req.body.email;
         let password = req.body.password;
 
-        user = require('../user/user').find_by_email(email);
+        let user = await User.find_by_email_w_password(email);
+        if (!user.id) {
+            return res.status(403).send({"error": "incorrect credentials"});
+        }
 
-        password_func.compare_password(user.password, password).then((result) => {
-            if (!result) {
-                return res.status(403).send({'error': 'Unauthorized'});
-            }
-        });
+        const result = await password_func.compare_password(user.password, password);
+
+        if (!result) {
+            return res.status(403).send({'error': 'Unauthorized'});
+        }
         return res.status(201).send({'token': this.make_token(user.id)});
     }
 
@@ -21,9 +25,7 @@ class AuthService {
     }
 
     static verify_token(token) {
-        // TODO
-        return true;
-        const token = jwt.verify(token, process.env.JWT_SECRET);
+        return jwt.verify(token, process.env.JWT_SECRET);
     }
 }
 

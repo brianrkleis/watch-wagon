@@ -1,16 +1,5 @@
 version: '3.8'
 services:
-  api:
-    container_name: api
-    build: .
-    ports:
-      - ${PORT}:${PORT}
-    depends_on:
-      - db
-    volumes:
-    - .:/usr/src/app
-    env_file:
-      - .env
 
   db:
     container_name: postgres
@@ -22,6 +11,24 @@ services:
     environment:
       - POSTGRES_DB=${DB_NAME}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
+
+  api:
+    container_name: api
+    build: .
+    ports:
+      - ${PORT}:${PORT}
+    depends_on:
+      - db
+    volumes:
+    - .:/usr/src/app
+    env_file:
+      - .env
+    # healthcheck:
+    #   test: ["CMD", "ping" ,"db"]
+    #   interval: 30s
+    #   timeout: 10s
+    #   retries: 3
+    #   start_period: 20s
 
 volumes: 
  data: {}

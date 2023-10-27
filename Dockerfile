@@ -7,7 +7,7 @@ WORKDIR /usr/src/app
 
 # Copies package.json, package-lock.json, tsconfig.json, .env to the root of WORKDIR
 # COPY ["package.json", "package-lock.json", "tsconfig.json", ".env", "./"]
-COPY ["package.json", "package-lock.json", ".env", "./"]
+COPY . .
 
 # Copies everything in the src directory to WORKDIR/src
 # COPY ./src ./src
@@ -17,6 +17,10 @@ RUN npm install
 
 # install knex
 RUN npm i knex -g
+
+# RUN knex --knexfile /usr/src/app/knexfile.js migrate:latest
+
+# RUN knex --knexfile /usr/src/app/knexfile.js seed:run
 
 # Runs the dev npm script to build & start the server
 CMD npm run start

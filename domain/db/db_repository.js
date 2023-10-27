@@ -1,17 +1,5 @@
 const { Pool } = require("pg");
 
-const knex = require('knex')();
+const knex = require('knex')(require('../../knexfile'));
 
-async function selectWhere(table, conditions) {
-    var toSelect = knex(table)
-    for (condition, value of conditions) {
-        toSelect = toSelect.where(condition, value);
-    }
-    return toSelect;
-}
-
-async function insert(table, obj) {
-    
-}
-
-module.exports = request;
+module.exports = knex;
