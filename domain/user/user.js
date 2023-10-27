@@ -1,5 +1,6 @@
 const knex = require('../db/db_repository');
 const resource = require('./userResource');
+const password_func = require('../auth/password');
 
 class User {
     static async find_by_id(id) {
@@ -16,15 +17,22 @@ class User {
     }
 
     static async create_user(user) {
-        return resource(await knex('users').insert(user));
+        user.password = password_func.hash_password(user.password);
+        await knex('users').insert(user);
+        return {"message": "created"};
     }
 
     static async update_user(userId, params) {
-        const user = await this.find_by_id(userId);
-        for (let param in params) {
-            user[param] = params[param];
+        if (params.password) {
+            params.password = password_func.hash_password(user.password);
         }
-        return resource(await knex('users').update(user));
+        let updated = await knex('users').where('id', userId).first().update(params, ['id'].concat(Object.keys(params)));
+        updated = updated[0];
+        if (updated.id == userId) {
+            delete updated.id;
+            return {"message": "updated", "what": updated};
+        }
+        return {"error": "error on updating"}
     }
 }
 

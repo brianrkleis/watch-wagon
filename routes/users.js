@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var app = express();
 
 const { User } = require('../domain/user/user');
 
@@ -16,19 +15,19 @@ router.get('/:userId', async function(req, res) {
 });
 
 router.put('/:userId', async function(req, res) {
-  const user = await User.update(req.params.userId);
-
-  if (!user.id) {
-    res.status(500).json({"error": "Error on updating"});
+  const status = await User.update_user(req.params.userId, req.body);
+  
+  if (status['error']) {
+    res.status(500).json(status);
     return;
   }
-  res.json(user)
+  res.json(status)
 });
 
 router.post('/', async function(req, res) {
-  const user = await User.create_user(req.body);
+  const message = await User.create_user(req.body);
 
-  res.json(user);
+  res.json(message);
 });
 
 module.exports = router;

@@ -12,12 +12,22 @@ class WatchList {
 
     static async add_to_watchlist(userId, movieId) {
         const watchlist = await this.get_by_userid(userId);
-        const pivot = await knex('watchlist_movie_pivot').insert({
+        const already_exists = await knex('watchlist_movie_pivot').where("watchlist_id", watchlist.id).where("movie_id", movieId);
+        if (already_exists.length > 0) {
+            return {"message": "already added"}
+        }
+        await knex('watchlist_movie_pivot').insert({
             "watchlist_id": watchlist.id,
             "movie_id": movieId
         });
 
-        return {"message": "created"};
+        return {"message": "added"};
+    }
+
+    static async remove_from_watchlist(userId, movieId) {
+        const watchlist = await this.get_by_userid(userId);
+        await knex('watchlist_movie_pivot').where('watchlist_id', watchlist.id).where('movie_id', movieId).del();
+        return {"message": "removed"};
     }
 
     static async create_watchlist(userId) {

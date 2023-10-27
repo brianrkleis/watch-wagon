@@ -22,6 +22,7 @@ function toResourceWithPassword(user) {
 }
 
 function userToResource(user, withPassword = false) {
+    if (!user) return {};
     if (!user.id && Array.isArray(user)){
         return user.map(toResource);
     }
