@@ -5,7 +5,6 @@ const { User } = require('../domain/user/user');
 
 router.get('/:userId', async function(req, res) {
   const user = await User.find_by_id(req.params.userId);
-  console.log(user);
   
   if (!user.id) {
     res.status(404).json({"error": "User not found"});
