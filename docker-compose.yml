@@ -1,0 +1,44 @@
+version: '3.8'
+services:
+
+  db:
+    container_name: postgres
+    image: postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - data:/data/db
+    environment:
+      - POSTGRES_DB=watchwagon
+      - POSTGRES_PASSWORD=root
+    env_file:
+      - ./watch-wagon-backend/.env
+
+  api:
+    container_name: api
+    build: ./watch-wagon-backend/
+    ports:
+      - 5000:5000
+    depends_on:
+      - db
+    volumes:
+    - ./watch-wagon-backend/:/usr/src/app
+    env_file:
+      - ./watch-wagon-backend/.env
+
+  front:
+    container_name: frontend
+    image: node:16
+    build: ./watch-wagon-main/
+      - 3000:3000
+    depends_on:
+    - db
+    - api
+    volumes:
+    - ./watch-wagon-main/:/usr/local/src
+    env_file:
+    - ./watch-wagon-main/.env
+
+
+volumes: 
+ data: {}
