@@ -33,19 +33,12 @@ jobs:
         echo REACT_APP_API_URL=http://localhost:8000 >> watch-wagon-main/.env
         echo PORT=3000 >> watch-wagon-main/.env
         
-  environment_run:
-    runs-on: ubuntu-latest
-    container: 
-      image: elixir:1.9-slim
-
-    steps: 
-    
     - name: Start environment
       run: |
         docker compose build
         docker compose up -d
         sleep 5
-        docker exec api knex migrate:up
+        docker compose run api knex migrate:up
 
     - name: Set up Node.js
       uses: actions/setup-node@v3
