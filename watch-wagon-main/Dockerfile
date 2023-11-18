@@ -1,5 +1,5 @@
 # Installs Node.js image
-FROM node:12.22.3-alpine3.12
+FROM node:16
 
 # sets the working directory for any RUN, CMD, COPY command
 # all files we put in the Docker container running the server will be in /usr/src/app (e.g. /usr/src/app/package.json)
@@ -13,15 +13,9 @@ COPY . .
 # COPY ./src ./src
 
 # Installs all packages
+
 RUN npm install
 
+EXPOSE 3000
 
-# install knex
-RUN npm i knex -g
-
-# RUN knex --knexfile /usr/src/app/knexfile.js migrate:latest
-
-# RUN knex --knexfile /usr/src/app/knexfile.js seed:run
-
-# Runs the dev npm script to build & start the server
 CMD npm run start
