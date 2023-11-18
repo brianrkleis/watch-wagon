@@ -17,7 +17,7 @@ jobs:
 
     - name: Create env files
       run: |
-        cd ${{ github.action_path }}
+        cd ${{ github.workspace }}
         touch watch-wagon-backend/.env
         echo APP_SECRET=37ryurfhjiuewr9u832tryfh8943 >> watch-wagon-backend/.env
         echo JWT_SECRET=84289rhdjiu2whjd2iue3tr58734hnfiuw3 >> watch-wagon-backend/.env
