@@ -7,9 +7,12 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
+
   build:
     runs-on: ubuntu-latest
-
+    container: 
+      image: elixir:1.9-slim
+      
     steps:
       
     - name: Checkout Repository
