@@ -15,8 +15,30 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
+    - name: Create env files
+      run: |
+        cd ${{ github.action_path }}
+        touch watch-wagon-backend/.env
+        echo APP_SECRET=37ryurfhjiuewr9u832tryfh8943 >> watch-wagon-backend/.env
+        echo JWT_SECRET=84289rhdjiu2whjd2iue3tr58734hnfiuw3 >> watch-wagon-backend/.env
+        echo PORT=5000 >> watch-wagon-backend/.env
+        echo DB_USER=postgres >> watch-wagon-backend/.env
+        echo DB_HOST='db'  >> watch-wagon-backend/.env
+        echo DB_NAME='watchwagon'  >> watch-wagon-backend/.env
+        echo DB_PASSWORD='root'  >> watch-wagon-backend/.env
+        echo DB_PORT=5432  >> watch-wagon-backend/.env
+        touch watch-wagon-main/.env
+        echo REACT_APP_MOVIE_API_URL=https://streaming-availability.p.rapidapi.com/ >> watch-wagon-main/.env
+        echo REACT_APP_API_URL=http://localhost:8000 >> watch-wagon-main/.env
+        echo PORT=3000 >> watch-wagon-main/.env
+        
+
     - name: Start environment
-      run: ./watch-wagon/start.sh
+      run: |
+        docker compose build 
+        docker compose up -d
+        sleep 5
+        docker exec -it api knex migrate:up
 
     - name: Set up Node.js
       uses: actions/setup-node@v3
