@@ -17,14 +17,13 @@ services:
     container_name: api
     build: ./watch-wagon-backend/
     ports:
-      - 5000:5000
+      - 5010:5010
     depends_on:
       - db
     volumes:
     - ./watch-wagon-backend/:/usr/src/app
     env_file:
       - ./watch-wagon-backend/.env
-    platform: linux/amd64
 
   front:
     container_name: frontend
@@ -39,7 +38,6 @@ services:
     - ./watch-wagon-main/:/usr/local/src
     env_file:
     - ./watch-wagon-main/.env
-    platform: linux/amd64
 
 volumes: 
  data: {}
