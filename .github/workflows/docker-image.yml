@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      
+    - name: Checkout Repository
+      uses: actions/checkout@v2
 
     - name: Start environment
       run: |
@@ -18,9 +21,6 @@ jobs:
         docker compose up -d
         sleep 5
         docker exec -it api knex migrate:up
-      
-    - name: Checkout Repository
-      uses: actions/checkout@v2
 
     - name: Set up Node.js
       uses: actions/setup-node@v3
