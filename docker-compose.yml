@@ -24,6 +24,7 @@ services:
     - ./watch-wagon-backend/:/usr/src/app
     env_file:
       - ./watch-wagon-backend/.env
+    platform: linux/amd64
 
   front:
     container_name: frontend
@@ -38,6 +39,7 @@ services:
     - ./watch-wagon-main/:/usr/local/src
     env_file:
     - ./watch-wagon-main/.env
+    platform: linux/amd64
 
 volumes: 
  data: {}
