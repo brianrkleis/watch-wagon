@@ -98,3 +98,11 @@ Foi utilizado o Scrum e para arquitetura de software foi utilizado o C4 Model.
 
 ## Casos de uso
 - Os casos de uso encontram-se dentro da pasta diagrams.
+
+
+## Utilização
+
+Execute os script start.sh para subir a aplicação. Para parar a aplicação utilize o comando docker compose down, ou docker-compose down dependendo da sua versão docker.
+Caso a sua versão docker seja mais antiga, altere os comandos do script start.sh para utilizar o comando docker do seu ambiente.
+ 
+A aplicação está homologada somente para ambientes linux.
