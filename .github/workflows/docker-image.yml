@@ -52,4 +52,5 @@ jobs:
 
     - name: Run Tests
       run: |
+        cd watch-wagon-backend
         npm test
