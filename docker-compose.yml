@@ -37,7 +37,7 @@ services:
     volumes:
     - ./watch-wagon-main/:/usr/local/src
     env_file:
-      - ./watch-wagon-main/.env
+    - ./watch-wagon-main/.env
 
 volumes: 
  data: {}
