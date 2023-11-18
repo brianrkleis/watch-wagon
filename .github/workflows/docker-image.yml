@@ -35,7 +35,7 @@ jobs:
 
     - name: Start environment
       run: |
-        docker compose build --platform linux/amd64
+        docker compose build
         docker compose up -d
         sleep 5
         docker exec api knex migrate:up
