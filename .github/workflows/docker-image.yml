@@ -13,7 +13,11 @@ jobs:
     steps:
 
     - name: Start environment
-      run: ./watch-wagon/start.sh
+      run: |
+        docker compose build 
+        docker compose up -d
+        sleep 5
+        docker exec -it api knex migrate:up
       
     - name: Checkout Repository
       uses: actions/checkout@v2
