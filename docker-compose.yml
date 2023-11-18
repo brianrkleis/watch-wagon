@@ -7,11 +7,20 @@ services:
     ports:
       - '5432:5432'
     volumes:
+<<<<<<< HEAD
       - ./data:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=watchwagon
       - POSTGRES_PASSWORD=root
       - PGDATA=/var/lib/postgresql/data
+=======
+      - data:/data/db
+    environment:
+      - POSTGRES_DB=watchwagon
+      - POSTGRES_PASSWORD=root
+    env_file:
+      - ./watch-wagon-backend/.env
+>>>>>>> 6f1fd0080f2679b045244fb30e42f82f8d0cac64
 
   api:
     container_name: api
@@ -29,7 +38,10 @@ services:
     container_name: frontend
     image: node:16
     build: ./watch-wagon-main/
+<<<<<<< HEAD
     ports:
+=======
+>>>>>>> 6f1fd0080f2679b045244fb30e42f82f8d0cac64
       - 3000:3000
     depends_on:
     - db
@@ -37,7 +49,12 @@ services:
     volumes:
     - ./watch-wagon-main/:/usr/local/src
     env_file:
+<<<<<<< HEAD
       - ./watch-wagon-main/.env
+=======
+    - ./watch-wagon-main/.env
+
+>>>>>>> 6f1fd0080f2679b045244fb30e42f82f8d0cac64
 
 volumes: 
  data: {}

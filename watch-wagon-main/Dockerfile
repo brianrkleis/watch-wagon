@@ -13,9 +13,14 @@ COPY . .
 # COPY ./src ./src
 
 # Installs all packages
+<<<<<<< HEAD
 
 RUN npm install
 
 EXPOSE 3000
 
+=======
+RUN npm install
+EXPOSE 3000
+>>>>>>> 6f1fd0080f2679b045244fb30e42f82f8d0cac64
 CMD npm run start
