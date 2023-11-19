@@ -78,10 +78,12 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: sa-east-1
 
-    - name: Setup SSH
-      uses: webfactory/ssh-agent@v0.5.3
+    - name: Set up AWS CLI
+      uses: aws-actions/configure-aws-credentials@v2
       with:
-        private-key: ${{ secrets.EC2_SSH_KEY }}
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: sa-east-1
 
     - name: Install SSH Client
       run: sudo apt-get install openssh-client
