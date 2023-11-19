@@ -35,7 +35,5 @@ jobs:
 
     - name: Deploy to AWS
       run: |
-        echo ${{ secrets.SSH_PRIVATE_KEY }} >> /home/ubuntu/watch-wagon.pem
-        chmod 400 /home/ubuntu/watch-wagon.pem
         chmod +x scripts/deploy.sh scripts/start.sh 
         ./scripts/deploy.sh ${{ github.workspace }}
