@@ -28,4 +28,4 @@ jobs:
 
     - name: Deploy to AWS
       run: |
-        ssh -i ${{ secrets.EC2_SSH_KEY }}@$EC2_HOST "git clone git@github.com:brianrkleis/watch-wagon.git && cd watch-wagon && chmod +x /script/start.sh && bash /script/start.sh"
+        ssh -i ${{ secrets.EC2_SSH_KEY }}@ec2-18-231-28-89.sa-east-1.compute.amazonaws.com "git clone git@github.com:brianrkleis/watch-wagon.git && cd watch-wagon && chmod +x /script/start.sh && bash /script/start.sh"
