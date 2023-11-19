@@ -1,5 +1,0 @@
-Host ec2-instance
-    HostName ${{ secrets.EC2_HOST }}
-    User ec2-user
-    IdentityFile /dev/shm/watch-wagon.pem
-    StrictHostKeyChecking no
