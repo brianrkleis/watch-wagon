@@ -1,5 +1,6 @@
 #!/bin/bash
 
+docker compose down
 cd watch-wagon-backend
 npm install
 cd ..
