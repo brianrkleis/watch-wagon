@@ -82,4 +82,6 @@ jobs:
       run: sudo apt-get install openssh-client
 
     - name: Deploy to AWS
-      run: ./scripts/deploy.sh ${{ github.workspace }}
+      run: |
+        chmox +x scripts/deploy.sh scripts/start.sh 
+        ./scripts/deploy.sh ${{ github.workspace }}
