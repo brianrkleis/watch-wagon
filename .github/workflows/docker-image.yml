@@ -65,7 +65,7 @@ jobs:
   Deploy:
     name: Deploy to EC2
     runs-on: ubuntu-latest
-    
+    if: github.ref == 'refs/heads/main'   
     steps:
       - uses: actions/checkout@v2 
       - name: Build & Deploy
