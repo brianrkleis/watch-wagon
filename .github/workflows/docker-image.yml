@@ -23,13 +23,13 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: sa-east-1
 
-      - name: Copy SSH key to runner
-        run: echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
+    - name: Copy SSH key to runner
+      run: echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
 
-      - name: Set up known_hosts
-        run: ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
+    - name: Set up known_hosts
+      run: ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Clone Repository and Execute Script
-        run: |
-          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ${{ github.workspace }}/* ec2-user@${{ secrets.EC2_HOST }}:/home/ubuntu/watch-wagon
-          ssh -i ~/.ssh/id_rsa ec2-user@${{ secrets.EC2_HOST }} "cd /home/ubuntu/watch-wagon && chmod +x script/start.sh && ./script/start.sh"
+    - name: Clone Repository and Execute Script
+      run: |
+        scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ${{ github.workspace }}/* ec2-user@${{ secrets.EC2_HOST }}:/home/ubuntu/watch-wagon
+        ssh -i ~/.ssh/id_rsa ec2-user@${{ secrets.EC2_HOST }} "cd /home/ubuntu/watch-wagon && chmod +x script/start.sh && ./script/start.sh"
