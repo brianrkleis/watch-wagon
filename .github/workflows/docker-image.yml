@@ -83,5 +83,5 @@ jobs:
 
     - name: Deploy to AWS
       run: |
-        chmox +x scripts/deploy.sh scripts/start.sh 
+        chmod +x scripts/deploy.sh scripts/start.sh 
         ./scripts/deploy.sh ${{ github.workspace }}
