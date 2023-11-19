@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
 
+    steps:
 
     - name: Install SSH Client
       run: sudo apt-get install openssh-client
