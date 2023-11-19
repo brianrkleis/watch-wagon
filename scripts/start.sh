@@ -1,10 +1,10 @@
 #!/bin/bash
 
-docker compose down
+sudo docker compose down
 cd watch-wagon-backend
 npm install
 cd ..
-docker compose build 
-docker compose up -d
+sudo docker compose build 
+sudo docker compose up -d
 sleep 5
-docker exec api knex migrate:up
+sudo docker exec api knex migrate:up
