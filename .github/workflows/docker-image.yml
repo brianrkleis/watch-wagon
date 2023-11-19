@@ -82,4 +82,4 @@ jobs:
       run: sudo apt-get install openssh-client
 
     - name: Deploy to AWS
-      run: ./scripts/deploy.sh  
+      run: ./scripts/deploy.sh ${{ github.workspace }}
