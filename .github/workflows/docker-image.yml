@@ -23,17 +23,9 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: sa-east-1
 
-    - name: Set up AWS CLI
-      uses: aws-actions/configure-aws-credentials@v2
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: sa-east-1
-
     - name: Install SSH Client
       run: sudo apt-get install openssh-client
 
     - name: Deploy to AWS
       run: |
-        chmod +x scripts/deploy.sh scripts/start.sh 
-        ./scripts/deploy.sh ${{ github.workspace }}
+        ssh -i ${{ secrets.EC2_SSH_KEY }}@$EC2_HOST "git clone git@github.com:brianrkleis/watch-wagon.git && cd watch-wagon && chmod +x /script/start.sh && bash /script/start.sh"
