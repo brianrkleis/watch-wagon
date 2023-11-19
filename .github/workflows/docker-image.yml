@@ -37,7 +37,7 @@ jobs:
       run: |
         pwd 
         cd ${{ github.workspace }}
-        bash /scripts/start.sh
+        bash scripts/start.sh
 
     - name: SetupNode.js
       uses: actions/setup-node@v3
