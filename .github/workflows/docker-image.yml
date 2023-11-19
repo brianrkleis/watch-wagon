@@ -19,4 +19,4 @@ jobs:
 
     - name: Clone Repository on EC2
       run: |
-        ssh -i <(echo "${{ secrets.EC2_SSH_KEY }}") ec2-user@${{ secrets.EC2_HOST }} "echo hello-world >> teste.txt"
+        ssh -i <(echo "${{ secrets.EC2_SSH_KEY }}") ec2-user@ec2-18-231-28-89.sa-east-1.compute.amazonaws.com "echo hello-world >> teste.txt"
