@@ -7,4 +7,4 @@ cd ..
 sudo docker compose build 
 sudo docker compose up -d
 sleep 5
-sudo docker exec api knex migrate:up
+sudo docker exec api knex migrate:latest
