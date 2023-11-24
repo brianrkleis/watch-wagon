@@ -17,7 +17,7 @@ services:
     container_name: api
     build: ./watch-wagon-backend/
     ports:
-      - 5010:5010
+      - 5000:5000
     depends_on:
       - db
     volumes:
@@ -27,7 +27,6 @@ services:
 
   front:
     container_name: frontend
-    image: node:16
     build: ./watch-wagon-main/
     ports:
       - 3000:3000
@@ -38,6 +37,3 @@ services:
     - ./watch-wagon-main/:/usr/local/src
     env_file:
     - ./watch-wagon-main/.env
-
-volumes: 
- data: {}

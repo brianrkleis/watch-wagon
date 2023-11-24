@@ -4,17 +4,40 @@ export default class MovieApiService {
     static url() {
         return process.env.MOVIE_API_URL;
     }
-
-
-    static headers() {
-        return new axios.AxiosHeaders({
-            'X-RapidAPI-Key': 'cef9bd5244msh252c303b1ee3d60p1fb887jsn7343ce627670',
-            'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
-        });
+    static config() {
+        let token = localStorage.getItem('token');
+        if (!token) {
+            throw Error('Must do login');
+        }
+        return new axios.AxiosHeaders({'Authorization': 'Token ' + token});
     }
-    async static getMoviesNetflix() {
-        return await axios.get(this.url() + '/changes', {
-            headers: this.headers()
-        });
+
+    LoginForm = () => {
+      const [username, setUsername] = useState('');
+      const [password, setPassword] = useState('');
+      const [error, setError] = useState(null);
+    
+      const handleLogin = async (e) => {
+        e.preventDefault();
+    
+        try {
+          // Make a POST request to your login endpoint
+          const response = await axios.post('localhost/login', {
+            username,
+            password,
+          });
+          if (response.status !== 201) {
+            return false;
+          }
+          localStorage.setItem('user', JSON.stringify(response.data.user));
+          localStorage.setItem('token', response.data.token);
+          return true; 
+          
+        } catch (err) {
+          // Handle login error
+          setError('Invalid username or password');
+          console.error('Login error:', err);
+        }
+      };
     }
 }

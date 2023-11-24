@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var usersRouter = require('./routes/users');
 var authRouter = require('./routes/auth');
+var moviesRouter = require('./routes/movies');
 var watchlistRouter = require('./routes/watchlist');
 const knex  = require('./domain/db/db_repository');
 
@@ -33,6 +34,7 @@ const middleware = (req, res, next) => {
 app.use('/users', middleware, usersRouter);
 app.use('/', authRouter);
 app.use('/watchlist', middleware, watchlistRouter);
+app.use('/movies', middleware, moviesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
