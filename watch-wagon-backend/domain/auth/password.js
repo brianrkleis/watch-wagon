@@ -5,7 +5,7 @@ async function compare_password(hashed, password) {
 }
 
 async function hash_password(password) {
-    return await hash.generate(password)
+    return await hash.generate(password);
 }
 
 module.exports = {

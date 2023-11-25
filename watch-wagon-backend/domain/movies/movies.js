@@ -6,6 +6,10 @@ class Movies{
         const movies = await knex('movies').where('id', id).first();
         return resource(movies);
     }
+    static async get_all(){
+        const movies = await knex('movies');
+        return resource(movies);
+    }
 
 }
 

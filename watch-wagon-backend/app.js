@@ -9,11 +9,13 @@ var authRouter = require('./routes/auth');
 var moviesRouter = require('./routes/movies');
 var watchlistRouter = require('./routes/watchlist');
 const knex  = require('./domain/db/db_repository');
+const cors = require('cors');
+
 
 const { AuthService } = require('./domain/auth/auth_service');
 
 var app = express();
-
+app.use(cors());
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');

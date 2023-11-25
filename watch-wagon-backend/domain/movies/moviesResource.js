@@ -5,6 +5,9 @@ function toResource(movies) {
     return {
         "id": movies.id,
         "title": movies.title,
+        "duration": movies.duration,
+        "casting": movies.casting,
+        'director': movies.director,
         "description": movies.description,
     };
 }

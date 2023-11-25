@@ -1,78 +1,82 @@
-import React, { useState, useContext, Component } from "react";
-import { useHistory } from "react-router-dom";
-import { FirebaseContext } from "../context/FirbaseContext";
-import HeaderWrapper from "../components/Header/HeaderWrapper";
-import NavBar from "../components/Header/NavBar";
-import Logo from "../components/Header/Logo";
-import FooterCompound from "../compounds/FooterCompound";
-import SignFormWrapper from "../components/SignForm/SignFormWrapper";
-import SignFormBase from "../components/SignForm/SignFormBase";
-import SignFormTitle from "../components/SignForm/SignFormTitle";
-import SignFormInput from "../components/SignForm/SignFormInput";
-import SignFormButton from "../components/SignForm/SignFormButton";
-import SignFormText from "../components/SignForm/SignFormText";
-import SignFormLink from "../components/SignForm/SignFormLink";
-import SignFormCaptcha from "../components/SignForm/SignFormCaptcha";
-import SignFormError from "../components/SignForm/SignFormError";
-import Warning from "../components/Header/Warning";
-import {AbstractControl, FieldControl, FieldGroup, FormBuilder, FormControl} from 'react-reactive-form';
-import apiService from "../services/movieApi.service";
+import React, { Component } from 'react';
+import MovieApiService from '../services/movieApi.service';
+import {
+    FormBuilder,
+    FieldGroup,
+    FieldControl,
+    Validators,
+ } from "react-reactive-form";
 
+const TextInput = ({ handler, touched, hasError, meta }) => (
+  <div>
+    <input type={meta.type} placeholder={`Enter ${meta.label}`} {...handler()}/>
+    <span>
+        {touched
+        && hasError("required")
+        && `${meta.label} is required`}
+    </span>
+  </div>  
+)
 export default class Login extends Component {
-
-
-    form = FormBuilder.group({
-        username: "",
-        password: ""
-    })
-    componentDidMount() {
-        localStorage.removeItem('token');
+    loginForm = FormBuilder.group({
+        email: ["", [Validators.required, Validators.email]],
+        password: ["", Validators.required],
+        rememberMe: false
+    });
+    handleReset=() => {
+        this.loginForm.reset();
     }
-
-    render(){
-        return <>
-              return (
-    <>
-      <HeaderWrapper className="header-wrapper-home">
-        <NavBar className="navbar-signin">
-          <Logo />
-        </NavBar>
-        <SignFormWrapper>
-          <SignFormBase onSubmit={handleSubmit} method="POST">
-            <Warning>NOT official Netflix</Warning>
-            <SignFormTitle>Sign In</SignFormTitle>
-            {error ? <SignFormError>{error}</SignFormError> : null}
-            <SignFormInput
-              type="text"
-              placeholder="Email Address"
-              value={emailAddress}
-              onChange={({ target }) => setEmailAddress(target.value)}
-            />
-            <SignFormInput
-              type="password"
-              placeholder="Password"
-              autoComplete="off"
-              value={password}
-              onChange={({ target }) => setPassword(target.value)}
-            />
-            <SignFormButton disabled={IsInvalid}>Sign In</SignFormButton>
-            <SignFormText>
-              New to Netflix?
-              <SignFormLink href="/signup">Sign up now.</SignFormLink>
-            </SignFormText>
-            <SignFormCaptcha>
-              This page is protected by Google reCAPTCHA to ensure you are not a
-              bot.
-            </SignFormCaptcha>
-          </SignFormBase>
-        </SignFormWrapper>
-      </HeaderWrapper>
-      <FooterCompound />
-    </>
-  );
-
-        </>
+    handleSubmit=async (e) => {
+        e.preventDefault();
+        if (await MovieApiService.login(this.loginForm.value)){
+          window.location.href="/"
+        }else{
+          alert("Login inválido")
+        }
+        console.log("Form values", this.loginForm.value);
     }
+    render() {
+        return (
+              <FieldGroup
+                control={this.loginForm}
+                render={({ get, invalid }) => (
+                  <form onSubmit={this.handleSubmit}>
 
+                    <FieldControl
+                      name="email"
+                      render={TextInput}
+                      meta={{ label: "email", type: "email" }}
+                    />
+
+                    <FieldControl
+                      name="password"
+                      render={TextInput}
+                      meta={{ label: "Password", type: "password" }}
+                    />
+
+                    <FieldControl
+                      name="rememberMe"
+                      render={({handler}) => (
+                        <div>
+                          <input {...handler("checkbox")}/>
+                        </div>
+                      )}
+                    />
+                    <button
+                      type="button"
+                      onClick={this.handleReset}
+                    >
+                      Reset
+                    </button>
+                    <button
+                      type="submit"
+                      disabled={invalid}
+                    >
+                      Submit
+                    </button>
+                  </form>
+                )}
+              />
+        );
+    }
 }
-

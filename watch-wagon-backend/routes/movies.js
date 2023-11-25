@@ -13,4 +13,10 @@ router.get('/:moviesId', async function (req, res) {
   res.json(movies);
 });
 
+router.get('/', async function (req, res) {
+  console.log("hum")
+  const movies = await Movies.get_all();
+  res.json(movies);
+});
+
 module.exports = router;

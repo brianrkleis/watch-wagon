@@ -7,15 +7,15 @@ WORKDIR /usr/src/app
 
 # Copies package.json, package-lock.json, tsconfig.json, .env to the root of WORKDIR
 # COPY ["package.json", "package-lock.json", "tsconfig.json", ".env", "./"]
-COPY . .
+COPY package*.json ./
 
 # Copies everything in the src directory to WORKDIR/src
-# COPY ./src ./src
+#COPY ./src ./src
+
+COPY . /usr/src/app
 
 # Installs all packages
 
 RUN npm install
-
-EXPOSE 3000
 
 CMD npm run start

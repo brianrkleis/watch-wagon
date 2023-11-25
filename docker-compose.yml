@@ -34,6 +34,6 @@ services:
     - db
     - api
     volumes:
-    - ./watch-wagon-main/:/usr/local/src
+      - ./watch-wagon-main/:/usr/src/app
     env_file:
     - ./watch-wagon-main/.env
