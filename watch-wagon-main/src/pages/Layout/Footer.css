@@ -1,0 +1,32 @@
+.footer {
+    background-color: #fae34b;
+    padding: 2rem;
+    color: #000000;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .footer-links,
+  .footer-service-code,
+  .footer-country {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .footer-links a,
+  .footer-service-code a,
+  .footer-country a {
+    text-decoration: none;
+    color: #757575;
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer-bottom {
+    margin-top: 1rem;
+    text-align: center;
+  }
+  

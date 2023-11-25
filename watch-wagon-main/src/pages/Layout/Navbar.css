@@ -1,0 +1,45 @@
+.navbar {
+    background-color: #111;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #e50914; /* Define a cor do texto para vermelho */
+  }
+  
+  .navbar-logo {
+    max-height: 40px;
+  }
+
+  .navbar-search {
+    background-color: #e50914; /* Cor de fundo do botão de busca */
+    color: #fff; /* Cor do texto do botão de busca */
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .navbar-search:hover {
+    background-color: #ff4081; /* Cor de fundo do botão de busca ao passar o mouse */
+  }
+  
+  .navbar-links {
+    display: flex;
+  }
+  
+  .navbar-links a {
+    margin-right: 1.5rem;
+    text-decoration: none;
+    color: #ff4081; /* Define a cor do texto para rosa */
+    font-weight: bold;
+  }
+  
+  .navbar-links a:hover {
+    color: #e50914;
+  }
+  

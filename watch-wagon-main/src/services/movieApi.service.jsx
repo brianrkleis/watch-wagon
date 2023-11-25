@@ -34,6 +34,16 @@ export default class MovieApiService {
       }
       return [];
     }   
+    static async getMovie(movieId){
+      console.log('to aqui');
+      const response = await this.axiosCall('get', '/movies/'+ movieId);
+      console.log(movieId);
+      console.log(response);
+      if(response.status === 200){
+        return response.data;
+      }
+      return null;
+    }  
 
     static async login(data){
       try {

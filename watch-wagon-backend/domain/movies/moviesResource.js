@@ -6,9 +6,11 @@ function toResource(movies) {
         "id": movies.id,
         "title": movies.title,
         "duration": movies.duration,
-        "casting": movies.casting,
+        "year": movies.year,
         'director': movies.director,
         "description": movies.description,
+        "casting": movies.casting,
+        "image": movies.image
     };
 }
 function moviesToResource(movies) {
