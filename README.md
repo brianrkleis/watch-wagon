@@ -8,7 +8,7 @@ Existem muitos serviços de streaming hoje em dia e com um grande problema onde 
 
 Hoje é muito complicado pois existem diversos catálogos e diversos serviços de streaming. Os espectadores estão cansados de ter de assinar inúmeras plataformas para assistir seus filmes favoritos. A relevância do problema deve-se a grande demanda e de como hoje é distribuido os "royalties" dentro da industria cinematrográfica. Visando resolver isso, a solução proposta é de um lugar onde possui diversos filmes para poder alugar e parte do preço do aluguél cobrindo os royalties.
 ## Tecnologias utilizadas:
-Front-End: ReactJS e Material UI
+Front-End: ReactJS e Bootstrap
 
 Back-End: ExpressJS
 
@@ -95,6 +95,7 @@ Foi utilizado o Scrum e para arquitetura de software foi utilizado o C4 Model.
 - O sistema não vai permitir alugar filmes de outras plataformas de streaming por conta dos direitos autorais e de propriedade.
 - O sistema não terá aplicativo mobile.
 - O sistema terá apenas 15 filmes no catálogo por conta de direitos autorais.
+- O sistema não terá pagamento.
 
 ## Casos de uso
 - Os casos de uso encontram-se dentro da pasta diagrams.
