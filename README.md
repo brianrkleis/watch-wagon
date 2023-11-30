@@ -96,6 +96,7 @@ Foi utilizado o Scrum e para arquitetura de software foi utilizado o C4 Model.
 - O sistema não terá aplicativo mobile.
 - O sistema terá apenas 15 filmes no catálogo por conta de direitos autorais.
 - O sistema não terá pagamento.
+- O sistema não terá "esqueci minha senha".
 
 ## Casos de uso
 - Os casos de uso encontram-se dentro da pasta diagrams.
