@@ -18,7 +18,13 @@ const cors = require('cors');
 const { AuthService } = require('./domain/auth/auth_service');
 
 var app = express();
-app.use(cors());
+const corsOptions ={
+   origin:'*',
+   credentials:true,
+   optionSuccessStatus:200,
+}
+app.use(cors(corsOptions));
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
