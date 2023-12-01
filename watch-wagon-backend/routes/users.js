@@ -23,10 +23,10 @@ router.put('/:userId', async function(req, res) {
   res.json(status)
 });
 
-router.post('/', async function(req, res) {
-  const message = await User.create_user(req.body);
+// router.post('/', async function(req, res) {
+//   const message = await User.create_user(req.body);
 
-  res.json(message);
-});
+//   res.json(message);
+// });
 
 module.exports = router;

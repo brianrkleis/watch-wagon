@@ -5,7 +5,9 @@ function toResource(user) {
     return {
         "id": user.id,
         "email": user.email,
-        "username": user.username
+        "username": user.username,
+        "rents": user.rents,
+        "movies": user.movies
     };
 }
 

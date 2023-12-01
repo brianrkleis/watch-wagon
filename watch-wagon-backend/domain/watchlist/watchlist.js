@@ -12,6 +12,7 @@ class WatchList {
 
     static async add_to_watchlist(userId, movieId) {
         const watchlist = await this.get_by_userid(userId);
+        console.log(watchlist);
         const already_exists = await knex('watchlist_movie_pivot').where("watchlist_id", watchlist.id).where("movie_id", movieId);
         if (already_exists.length > 0) {
             return {"message": "already added"}

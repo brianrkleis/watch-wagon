@@ -8,6 +8,9 @@ var usersRouter = require('./routes/users');
 var authRouter = require('./routes/auth');
 var moviesRouter = require('./routes/movies');
 var watchlistRouter = require('./routes/watchlist');
+var rentRouter = require('./routes/rent');
+var genreRouter = require('./routes/genre');
+
 const knex  = require('./domain/db/db_repository');
 const cors = require('cors');
 
@@ -37,6 +40,8 @@ app.use('/users', middleware, usersRouter);
 app.use('/', authRouter);
 app.use('/watchlist', middleware, watchlistRouter);
 app.use('/movies', middleware, moviesRouter);
+app.use('/rent', middleware, rentRouter);
+app.use('/genre', middleware, genreRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -56,9 +61,6 @@ app.use(function(err, req, res, next) {
 
 const connectToDB = async () => {
   try {
-    // await pool.connect();
-    // knex.select('SELECT 1').then(result => console.log(result));
-    // pool.
     knex('users').first();
     console.log('App working');
   } catch (err) {

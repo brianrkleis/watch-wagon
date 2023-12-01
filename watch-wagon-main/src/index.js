@@ -5,11 +5,14 @@ import HomePage from "./pages/HomePage/HomePage";
 import MoviePage from "./pages/MoviePage/MoviePage";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
+import Register from "./pages/Register/Register";
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login />}>
+        </Route>
+        <Route path="/register" element={<Register />}>
         </Route>
         <Route path="/" element={<HomePage />}>
         </Route>
