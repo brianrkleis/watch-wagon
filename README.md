@@ -71,7 +71,7 @@ Escalabilidade para lidar com um grande número de usuários e filmes.​
 
 Segurança:​
 
-Proteção de dados do usuário e informações de pagamento.​
+Proteção senha do usuário criptografada em banco.
 
 Usabilidade:​
 
