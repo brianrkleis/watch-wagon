@@ -20,6 +20,10 @@ const SearchPage = () => {
         fetchMovies();
     }, [q]);
 
+    const goToMovie= (movieId) => {
+        window.location.href='/movie/'+ movieId;
+        }
+
     return (
         <Layout>
             <div className="container">

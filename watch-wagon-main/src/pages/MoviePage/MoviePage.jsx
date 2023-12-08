@@ -195,7 +195,7 @@ const MoviePage = () => {
                   <ul className="list-group list-group-flush">
                     {
                       movieStat.in_rent.map((streaming, idx) => (
-                        <li key={idx}>
+                        <li key={idx} className="list-group-item">
                           <div className="row">
                             <div className="col">
                               <h6>{streaming.source}</h6>
