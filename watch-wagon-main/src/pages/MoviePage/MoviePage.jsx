@@ -34,7 +34,6 @@ const MoviePage = () => {
   }
 
   const goToMyRents = () => {
-    console.log(isInRents(6));
     new bootstrap.Modal(document.getElementById('modalShowRents')).show();
   }
 
@@ -58,6 +57,18 @@ const MoviePage = () => {
   const addWatchList = () => {
     setMovieStat({...movieStat, in_watchlist: true});
     MovieApiService.addToWatchList(movieId).then();
+  }
+  
+  const formatDateToCustomString = (date) => {
+    date = new Date(date);
+    const options = { day: '2-digit', month: 'long' };
+    const dateFormatter = new Intl.DateTimeFormat('pt-BR', options);
+    const formattedDateParts = dateFormatter.formatToParts(date);
+  
+    const day = formattedDateParts.find(part => part.type === 'day').value;
+    const month = formattedDateParts.find(part => part.type === 'month').value;
+  
+    return `${day} de ${month}`;
   }
 
   $(document).ready(function() {
@@ -188,6 +199,9 @@ const MoviePage = () => {
                           <div className="row">
                             <div className="col">
                               <h6>{streaming.source}</h6>
+                              <div className="col"></div>
+                              <div className="text-muted">Válido até {formatDateToCustomString(streaming.rent_expire)}
+                              </div>
                             </div>
                             <div className="col-4 text-end">
                               {
