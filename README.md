@@ -31,7 +31,6 @@ Pull requests são bem vindos contanto que seja aberto issue.
 Cadastro de Usuário:​
 
 Os usuários devem ser capazes de criar contas com informações básicas.​
-Opção de registro por e-mail, número de telefone ou login social (por exemplo, Facebook ou Google).​
 
 Autenticação e Segurança:​
 
@@ -39,7 +38,7 @@ Autenticação segura para proteger as contas dos usuários.​
 
 Pesquisa e Navegação:​
 
-Os usuários devem poder pesquisar filmes por título e gênero.​
+Os usuários devem poder pesquisar filmes por título.
 Opção de explorar filmes por categorias.​
 
 Aluguel de Filmes:​
@@ -62,6 +61,10 @@ Watchlist:​
 
 Capacidade de adicionar e remover filmes da WatchList.
 
+Perfil:
+
+Capacidade de visualizar watchlist e filmes alugados.
+
 ## Requisitos não funcionais:​
 
 Desempenho:​
@@ -76,13 +79,14 @@ Proteção senha do usuário criptografada em banco.
 Usabilidade:​
 
 Interface de usuário intuitiva e amigável.​
-Suporte a navegadores(Google Chrome e Brave) nos dispositivos desktops.
+Suporte a navegadores(Google Chrome e Brave, Microsoft Edge) nos dispositivos desktops.
 
 ## Restrições
 
 - O sistema não vai permitir alugar filmes
 - O sistma não vai salvar historico de pesquisa
 - O sistema não vai utilizar plataformas de streamings a não ser o YouTube.
+- - O sistema não vai possuir a tela de esqueci minha senha.
 
 ## Metodologia
 
