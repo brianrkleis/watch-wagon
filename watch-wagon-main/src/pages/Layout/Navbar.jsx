@@ -10,8 +10,8 @@ const Navbar = () => {
     <nav className="navbar navbar-expand bg-warning">
       <div className="container-fluid">
             <a className="navbar-brand" href="/">Watch Wagon</a>
-            <form className="d-flex" role="search">
-                <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+            <form action="/search" className="d-flex" role="search">
+                <input name="q" className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
                 <button className="navbar-search" type="submit">Search</button>
             </form>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">

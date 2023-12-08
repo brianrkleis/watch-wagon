@@ -34,7 +34,6 @@ export default class MovieApiService {
     static async getMovies() {
       const response = await this.axiosCall('get','/genre');
       if(response.status === 200){
-        console.log(response.data);
         return response.data;
       }
       MovieApiService.logout();
@@ -75,5 +74,55 @@ export default class MovieApiService {
       localStorage.removeItem('user');
       localStorage.removeItem('token'); 
       window.location.href = "/login";
+    }
+
+    static async createRent(data) {
+      const response = await this.axiosCall('post', '/rent', data);
+      return response.data;
+    }
+
+    static async getUser() {
+      const user = localStorage.getItem('user');
+      
+      if (user == 'undefined') {
+        window.location.href = "/login";
+      }
+      const response = await this.axiosCall('get', '/users/' + JSON.parse(user).id);
+      
+      return response.data;
+    }
+
+    static async searchMovies(q) {
+      const response = await this.axiosCall('get', '/movies/search?q=' + q);
+      return response.data;
+    }
+
+    static async getMovieStats(movieId) {
+      const response = await this.axiosCall('get', '/movies/' + movieId + '/stats?userId=' + JSON.parse(localStorage.getItem('user')).id);
+
+      return response.data;
+    }
+
+    static async rentMovie(movieId, data) {
+      const response = await this.axiosCall('post', '/rent', {...data, user_id: JSON.parse(localStorage.getItem('user')).id});
+
+      return response.data;
+    }
+
+    static async addToWatchList(movieId) {
+      const response = await this.axiosCall('post', '/watchList/' + JSON.parse(localStorage.getItem('user')).id + '/' + movieId);
+
+      return response.data;
+    }
+
+    static async removeFromWatchList(movieId) {
+      const response = await this.axiosCall('delete', '/watchList/' + JSON.parse(localStorage.getItem('user')).id + '/' + movieId);
+
+      return response.data;
+    }
+
+    static async updateUser(data) {
+      const response = await this.axiosCall('put', '/users/' + JSON.parse(localStorage.getItem('user')).id, data);
+      return response.data;
     }
 }

@@ -7,9 +7,13 @@ const movie_resource = require('../movies/moviesResource');
 class User {
     static async find_by_id(id) {
         const user = await knex('users').where('users.id', id).first();
-        user.rents = await knex('rents').where('user_id', id);
-        user.rents.streaming_rent = await knex('streaming_rents').where('id', user.rents.streaming_rent_id);
-        user.rents = rent_resource(user.rents);
+        if (user == undefined) return {};
+        user.rents = await knex('rents')
+                            .join('streaming_rents', 'rents.streaming_rent_id', '=', 'streaming_rents.id')
+                            .join('movies', 'streaming_rents.movie_id', '=', 'movies.id')
+                            .where('user_id', id);
+
+        user.rents = movie_resource(user.rents);
         
         user.movies = movie_resource(await knex('movies')
                         .join('watchlist_movie_pivot', 'movies.id', '=', 'watchlist_movie_pivot.movie_id')
@@ -54,7 +58,7 @@ class User {
                                          .first()
                                          .update(params)
                                          .returning(Object.keys(params).filter(key => params[key] != null || key == 'id'));
-        console.log(updated);
+
         updated = updated[0];
         if (updated.id == userId) {
             delete updated.id;

@@ -1,6 +1,10 @@
 .bg-warning{
     background-color: #fae34b !important;
-    
+}
+
+.btn-warning{
+    background-color: #fae34b !important;
+    border-color: #fae34b !important;
 }
 
 input:-webkit-autofill,

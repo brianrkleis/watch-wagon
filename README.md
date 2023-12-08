@@ -36,6 +36,7 @@ Opção de registro por e-mail, número de telefone ou login social (por exemplo
 Autenticação e Segurança:​
 
 Autenticação segura para proteger as contas dos usuários.​
+Recuperação de senha caso o usuário esqueça suas credenciais de login.​
 
 Pesquisa e Navegação:​
 
@@ -57,6 +58,7 @@ Gerenciamento de Conta:​
 
 Os usuários podem editar informações pessoais, como nome, endereço, etc.​
 Opção de adicionar e gerenciar métodos de pagamento.​
+Capacidade de desativar permanentemente a conta.​
 
 Watchlist:​
 
@@ -71,7 +73,7 @@ Escalabilidade para lidar com um grande número de usuários e filmes.​
 
 Segurança:​
 
-Proteção senha do usuário criptografada em banco.
+Proteção de dados do usuário e informações de pagamento.​
 
 Usabilidade:​
 

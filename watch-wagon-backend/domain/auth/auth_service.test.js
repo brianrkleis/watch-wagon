@@ -1,4 +1,3 @@
-// authService.test.js
 const { AuthService } = require('./auth_service');
 const passwordFunc = require('./password');
 const jwt = require('jsonwebtoken');

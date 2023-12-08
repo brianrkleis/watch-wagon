@@ -1,4 +1,5 @@
 const knex = require('../db/db_repository');
+const rentToResource = require('./rentResource');
 const resource = require('./rentResource');
 const moment = require('moment');
 
@@ -22,7 +23,8 @@ class Rent {
         }
         rent.price = streaming_rent.price;
         rent.rent_dt = moment(new Date()).format('YYYY-MM-DD HH:mm');
-        const toReturn = await knex('rents').insert(rent);
+        console.log(rentToResource(rent));
+        const toReturn = await knex.insert(rentToResource(rent)).into('rents').returning('*');
 
         return resource(toReturn);
     }

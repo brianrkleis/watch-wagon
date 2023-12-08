@@ -17,7 +17,11 @@ class AuthService {
         if (!result) {
             return res.status(403).send({'error': 'Unauthorized'});
         }
-        return res.status(201).send({'token': this.make_token(user.id)});
+        delete user.password;
+        return res.status(201).send({
+            'token': this.make_token(user.id),
+            'user': user
+        });
     }
 
     static make_token(user_id) {

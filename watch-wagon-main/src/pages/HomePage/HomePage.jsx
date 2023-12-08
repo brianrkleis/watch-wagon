@@ -30,7 +30,7 @@ class HomePage extends Component {
                   <div style={{overflowX: 'scroll', whiteSpace: 'nowrap'}} className="flex-row flex-nowrap">
                   {
                     value.map((movie) => (
-                      <div onClick={()=>this.goToMovie(movie.id)}key={movie.id} className="movie-card" style={{height: '350px', cursor: 'pointer'}}>
+                      <div onClick={()=>this.goToMovie(movie.id)} key={movie.id} onKeyDown={() => this.goToMovie(movie.id)} className="movie-card" style={{height: '350px', cursor: 'pointer'}}>
                         <img className="img-fluid" style={{height: '320px', objectFit: 'cover'}} src={movie.image} alt={movie.title} />
                         <h2>{movie.title}</h2>
                       </div>
