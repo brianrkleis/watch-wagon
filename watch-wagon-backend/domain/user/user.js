@@ -1,7 +1,6 @@
 const knex = require('../db/db_repository');
 const resource = require('./userResource');
 const password_func = require('../auth/password');
-const rent_resource = require('../rent/rentResource');
 const movie_resource = require('../movies/moviesResource');
 
 class User {
@@ -11,6 +10,7 @@ class User {
         user.rents = await knex('rents')
                             .join('streaming_rents', 'rents.streaming_rent_id', '=', 'streaming_rents.id')
                             .join('movies', 'streaming_rents.movie_id', '=', 'movies.id')
+                            .select(['movies.id', 'movies.image', 'movies.title'])
                             .where('user_id', id);
 
         user.rents = movie_resource(user.rents);
@@ -18,6 +18,7 @@ class User {
         user.movies = movie_resource(await knex('movies')
                         .join('watchlist_movie_pivot', 'movies.id', '=', 'watchlist_movie_pivot.movie_id')
                         .join('watchlists', 'watchlist_movie_pivot.watchlist_id', '=', 'watchlists.id')
+                        .select(['movies.id', 'movies.image', 'movies.title'])
                         .where('watchlists.user_id', id));
         return resource(user);
     }
