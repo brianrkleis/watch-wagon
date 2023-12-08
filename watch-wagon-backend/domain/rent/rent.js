@@ -25,7 +25,7 @@ class Rent {
         rent.rent_dt = moment(new Date()).format('YYYY-MM-DD HH:mm');
         const toReturn = await knex.insert(rentToResource(rent)).into('rents').returning('*');
 
-        return resource(toReturn);
+        return resource(toReturn[0]);
     }
 }
 

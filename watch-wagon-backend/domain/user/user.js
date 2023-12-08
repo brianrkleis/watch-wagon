@@ -50,10 +50,11 @@ class User {
         params = {
             username: params.username,
             password: params.password,
+            email: params.email,
             id: userId
         };
         if (params.password) {
-            params.password = await password_func.hash_password(user.password);
+            params.password = await password_func.hash_password(params.password);
         }
         let updated = await knex('users').where('id', userId)
                                          .first()
